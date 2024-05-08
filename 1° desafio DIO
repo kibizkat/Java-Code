@@ -1,14 +1,59 @@
-// 1° desafio referente ao DIO - Santander BackEnd
-
 #import java.util.Scanner;
 
 public class Main{
     public static void main(String[] args){
         Scanner s = new Scanner(System.in);
+        double saldo = 0;
 
-        int x = s.nextInt();
+        System.out.println("Digite o numero da Conta: ");
+        int conta = s.nextInt();
 
-        System.out.println("x: " + x);
-        
+        System.out.println("Digite o numero da Senha: ");
+        int senha = s.nextInt();
+
+        while(true){
+            if(conta == 0){
+                System.out.println("Conta Inexistente\n");
+            }else if(senha==0){
+                System.out.println("Senha Invalida\n");
+            }else{
+            System.out.println("Bem vindo ao Banco XYZ\n");
+            System.out.println("Digite uma das opções abaixo: \n");
+            System.out.println("1 - Deposito\n");
+            System.out.println("2 - Saque\n");
+            System.out.println("3 - Saldo\n");
+            System.out.println("4 - Sair\n");
+            
+            int opção = s.nextInt();
+
+            System.out.println("Digite a opção desejada: ");
+
+            if(opção == 0){
+                System.out.println("Opção Invalida\n");
+            }else if(opção == 1){
+
+            System.out.println("Digite o valor do deposito: ");
+            double deposito = s.nextDouble();
+            saldo = deposito;
+
+            System.out.println("Depósito efetuado com Sucesso\n");
+
+            }else if(opção == 2){	
+
+            System.out.println("Digite o valor do saque: ");
+            double saque = s.nextDouble();
+            saldo = saldo - saque;
+            
+            System.out.println("Saque efetuado com Sucesso\n");
+            
+            }else if(opção == 3){
+
+            System.out.println("Seu saldo é: R$"+saldo+",00"); 
+            
+            }else if(opção == 4){
+
+                break;
+            }
+        }
     }
 }
