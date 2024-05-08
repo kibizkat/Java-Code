@@ -1,0 +1,32 @@
+package controle;
+import java.util.Scanner;
+
+public class controles {
+
+	public static void main(String[] args) {
+		Scanner s = new Scanner(System.in);
+		
+		int loop_1 = s.nextInt();
+		int loop_2 = s.nextInt();
+		
+		if(loop_1 > loop_2) {
+			System.out.printf("ParametrosInvalidosException");
+	
+		}else {
+		
+			contagem(loop_1, loop_2);
+		
+		}
+	}
+	
+	static Integer contagem(int loop_1, int loop_2) {
+		
+		for(int i = loop_1; i <= loop_2; i++) {
+			System.out.printf("Imprimindo o numero "+ i + "\n");
+		}
+	
+		return 0;
+		
+	}
+	
+}
