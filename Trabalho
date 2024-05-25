@@ -1,0 +1,73 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class CalculaForcaSwing extends JFrame {
+
+    private JTextField f1xField, f1yField;
+    private JLabel resultadoLabel;
+
+    public CalculaForcaSwing() {
+        // Configurações da janela
+        setTitle("Calculadora de Força");
+        setSize(400, 200);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLocationRelativeTo(null);
+        setLayout(new GridLayout(4, 2));
+
+        // Componentes da força F1
+        add(new JLabel("Componente i da força F1 (N):"));
+        f1xField = new JTextField();
+        add(f1xField);
+
+        add(new JLabel("Componente j da força F1 (N):"));
+        f1yField = new JTextField();
+        add(f1yField);
+
+        // Botão para calcular a força F2
+        JButton calcularButton = new JButton("Calcular Força F2");
+        add(calcularButton);
+
+        // Painel para o resultado
+        JPanel resultadoPanel = new JPanel(new FlowLayout());
+        resultadoLabel = new JLabel("A força F2 é:");
+        resultadoPanel.add(resultadoLabel);
+        add(resultadoPanel);
+
+        // Ação do botão calcular
+        calcularButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                calcularForca();
+            }
+        });
+    }
+
+    private void calcularForca() {
+        try {
+            // Obter os valores da força F1
+            double f1x = Double.parseDouble(f1xField.getText());
+            double f1y = Double.parseDouble(f1yField.getText());
+
+            // Calcular a força F2
+            double f2x = -f1x;
+            double f2y = -f1y;
+
+            // Exibir o resultado
+            String resultado = String.format("A outra força F2 é: (%.2f N)i + (%.2f N)j", f2x, f2y);
+            resultadoLabel.setText(resultado);
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(this, "Por favor, insira valores numéricos válidos.", "Erro", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                new CalculaForcaSwing().setVisible(true);
+            }
+        });
+    }
+}
